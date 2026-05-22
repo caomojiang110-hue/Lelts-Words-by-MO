@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>雅思单词背诵</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">IELTS Vocabulary Trainer</p>
+        <h1>雅思单词背诵</h1>
+      </div>
+      <div class="stats" aria-label="学习统计">
+        <div>
+          <strong id="totalCount">0</strong>
+          <span>词库</span>
+        </div>
+        <div>
+          <strong id="bookCount">0</strong>
+          <span>生词本</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar" aria-label="分类导航">
+        <nav class="tabs" id="categoryTabs">
+          <button class="tab active" data-category="core" type="button">必背单词</button>
+          <button class="tab" data-category="listening" type="button">听力单词</button>
+          <button class="tab" data-category="reading" type="button">阅读单词</button>
+          <button class="tab" data-category="notebook" type="button">个人生词本</button>
+        </nav>
+
+        <section class="panel">
+          <label for="searchInput">搜索单词 / 释义 / 搭配</label>
+          <input id="searchInput" type="search" placeholder="例如 environment" />
+        </section>
+
+        <section class="panel" id="filterPanel">
+          <label for="groupFilter">排序筛选</label>
+          <select id="groupFilter"></select>
+        </section>
+
+        <section class="panel mini">
+          <h2>今日建议</h2>
+          <p id="studyHint">先背高频必背词，再刷听力和阅读真题词。</p>
+        </section>
+      </aside>
+
+      <section class="content">
+        <div class="sectionHeader">
+          <div>
+            <p id="sectionMeta">按词频分布</p>
+            <h2 id="sectionTitle">必背单词</h2>
+          </div>
+          <button class="ghostButton" id="clearNotebook" type="button">清空生词本</button>
+        </div>
+
+        <div class="wordGrid" id="wordGrid"></div>
+        <div class="pager" id="pager">
+          <button class="ghostButton" id="prevPage" type="button">上一页</button>
+          <span id="pageInfo">第 1 / 1 页</span>
+          <button class="ghostButton" id="nextPage" type="button">下一页</button>
+        </div>
+        <div class="emptyState" id="emptyState" hidden>
+          <h3>这里暂时没有单词</h3>
+          <p>换一个分类或搜索词试试。</p>
+        </div>
+      </section>
+    </main>
+
+    <template id="wordCardTemplate">
+      <article class="wordCard">
+        <div class="cardTop">
+          <div>
+            <div class="wordLine">
+              <h3 class="word"></h3>
+              <span class="tag"></span>
+            </div>
+            <p class="pronunciation"></p>
+          </div>
+          <div class="actions">
+            <button class="iconButton speakButton" type="button" aria-label="播放读音" title="播放读音">▶</button>
+            <button class="iconButton addButton" type="button" aria-label="加入生词本" title="加入生词本">＋</button>
+          </div>
+        </div>
+        <p class="meaning"></p>
+        <dl class="details">
+          <div>
+            <dt>真题例句</dt>
+            <dd class="example"></dd>
+          </div>
+          <div>
+            <dt>近义词</dt>
+            <dd class="synonyms"></dd>
+          </div>
+          <div>
+            <dt>反义词</dt>
+            <dd class="antonyms"></dd>
+          </div>
+          <div>
+            <dt>词形变化</dt>
+            <dd class="forms"></dd>
+          </div>
+          <div>
+            <dt>常用搭配</dt>
+            <dd class="collocations"></dd>
+          </div>
+          <div>
+            <dt>记忆窍门</dt>
+            <dd class="memory"></dd>
+          </div>
+        </dl>
+      </article>
+    </template>
+
+    <script src="./vocabulary.generated.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
